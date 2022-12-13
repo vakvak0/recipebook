@@ -1,7 +1,7 @@
 const db = require("../models");
-const Recipe = db.recipes;
+const Ingredient = db.ownedIngredients;
 
-// Create and Save a new Recipe
+// Create and Save a new ingredient
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.title) {
@@ -10,62 +10,64 @@ exports.create = (req, res) => {
   }
 
   // Create a Tutorial
-  const recipe = new Recipe({
+  const ingredient = new Ingredient({
     name: req.body.name,
     ingredients: req.body.ingredients,
     instructions: req.body.instructions,
   });
 
   // Save Tutorial in the database
-  recipe
-    .save(recipe)
+  ingredient
+    .save(ingredient)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Recipe.",
+          err.message || "Some error occurred while creating the ingredient.",
       });
     });
 };
 
-// Retrieve all Recipes from the database.
+// Retrieve all ingredients from the database.
 exports.findAll = (req, res) => {
   const title = req.query.title;
   let condition = title
     ? { title: { $regex: new RegExp(title), $options: "i" } }
     : {};
 
-  Recipe.find(condition)
+  ingredient
+    .find(condition)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while retrieving recipes.",
+        message:
+          err.message || "Some error occurred while retrieving ingredients.",
       });
     });
 };
 
-// Find a single Recipe with an id
+// Find a single ingredient with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Recipe.findById(id)
+  Ingredient.findById(id)
     .then((data) => {
       if (!data)
-        res.status(404).send({ message: "Not found Recipe with id " + id });
+        res.status(404).send({ message: "Not found ingredient with id " + id });
       else res.send(data);
     })
     .catch((err) => {
       res
         .status(500)
-        .send({ message: "Error retrieving Recipe with id=" + id });
+        .send({ message: "Error retrieving ingredient with id=" + id });
     });
 };
 
-// Update a Recipe by the id in the request
+// Update a ingredient by the id in the request
 exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
@@ -75,45 +77,45 @@ exports.update = (req, res) => {
 
   const id = req.params.id;
 
-  Recipe.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  Ingredient.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Recipe with id=${id}. Maybe Recipe was not found!`,
+          message: `Cannot update ingredient with id=${id}. Maybe ingredient was not found!`,
         });
-      } else res.send({ message: "Recipe was updated successfully." });
+      } else res.send({ message: "ingredient was updated successfully." });
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating Recipe with id=" + id,
+        message: "Error updating ingredient with id=" + id,
       });
     });
 };
 
-// Delete a Recipe with the specified id in the request
+// Delete a ingredient with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Recipe.findByIdAndRemove(id)
+  Ingredient.findByIdAndRemove(id)
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete Recipe with id=${id}. Maybe Recipe was not found!`,
+          message: `Cannot delete ingredient with id=${id}. Maybe ingredient was not found!`,
         });
       } else {
         res.send({
-          message: "Recipe was deleted successfully!",
+          message: "ingredient was deleted successfully!",
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete Recipe with id=" + id,
+        message: "Could not delete ingredient with id=" + id,
       });
     });
 };
 
-// Delete all Recipes from the database.
+// Delete all ingredients from the database.
 exports.deleteAll = (req, res) => {
   res.send({ message: `DONT!` });
 };

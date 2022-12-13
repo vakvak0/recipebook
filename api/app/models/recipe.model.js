@@ -5,7 +5,7 @@ module.exports = (mongoose) => {
       name: { type: String, required: true },
       ingredients: [
         {
-          ownedIngredient: mongoose.Schema.Types.ObjectId,
+          ingredientID: mongoose.Schema.Types.ObjectId,
           name: String,
           amount: String,
           unit: String,
