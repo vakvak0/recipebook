@@ -1,4 +1,4 @@
-import IngredientDataService from "../services/Ingredient.service";
+import IngredientDataService from "../src/services/Ingredient.service";
 import React, { Component } from "react";
 export default class Ingredients extends Component {
   constructor(props) {

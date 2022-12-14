@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import Repices from "./components/Recipes.jsx";
-import Ingredients from "./components/Ingredients";
-import RenderShowbox from "./components/RenderShowbox";
+import Repices from "../components/Recipes";
+import Ingredients from "../components/Ingredients";
+import RenderShowbox from "../components/RenderShowbox";
 
 function App() {
   const [showBox, setShowBox] = useState("hidden");

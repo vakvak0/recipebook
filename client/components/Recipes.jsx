@@ -1,6 +1,6 @@
-import RecipeDataService from "../services/recipe.service";
+import RecipeDataService from "../src/services/recipe.service";
 import React, { Component } from "react";
-import RenderShowbox from "./RenderShowbox";
+
 export default class Repices extends Component {
   constructor(props) {
     super(props);
