@@ -78,7 +78,13 @@ button:focus-visible {
   cursor: pointer;
   text-decoration: underline;
 }
-
+.ingredient:hover {
+  cursor: default;
+}
+.ingredientOnEdit:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 .egg::before {
   display: inline-block;
   content: "\1F95A";
@@ -92,9 +98,11 @@ button:focus-visible {
   text-decoration: none !important;
 }
 
-.recipeDiv {
+.recipeDiv,
+.ingredientDiv {
   text-align: left;
   padding-left: 20px;
+  width: fit-content;
 }
 
 .app {
@@ -154,7 +162,6 @@ h4 {
 h2 {
   margin-bottom: 50px;
 }
-
 .showbox .ingredient::before {
   display: inline-block;
   content: "\1F95A";

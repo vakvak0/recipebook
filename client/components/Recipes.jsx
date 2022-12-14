@@ -1,13 +1,12 @@
-import RecipeDataService from "../src/services/recipe.service";
 import React, { Component } from "react";
+import RecipeDataService from "../src/services/recipe.service";
 
-export default class Repices extends Component {
+export default class Recipes extends Component {
   constructor(props) {
     super(props);
     this.loadList = this.loadList.bind(this);
-
     this.state = {
-      recipes: [{}],
+      recipes: {},
     };
   }
 
@@ -28,38 +27,36 @@ export default class Repices extends Component {
     this.loadList();
   }
 
+  showRecipe(recipe) {
+    this.props.visibility("visible");
+    this.props.showBox(recipe);
+  }
+
   render() {
-    let { recipes } = this.state;
+    let recipes = this.state.recipes;
+    if (JSON.stringify(recipes) == "{}") return <div>Haetaan reseptejä</div>;
     return (
-      <div className="content">
-        <h2>Reseptit</h2>
-        <button onClick={this.loadList}>Muokkaa reseptejä</button>
-        <div className="recipes">
-          {recipes &&
-            recipes.map((recipe, index) => (
-              <div className="recipeDiv" key={index}>
-                {this.state.editing ? (
-                  <h3
-                    onClick={() =>
-                      this.props.showBox(recipe, { visibility: "visible" })
-                    }
-                    className="recipeItem cross"
-                  >
-                    {recipe.name}
-                  </h3>
-                ) : (
-                  <h3
-                    onClick={() =>
-                      this.props.showBox(recipe, { visibility: "visible" })
-                    }
-                    className="recipeItem egg"
-                  >
-                    {recipe.name}
-                  </h3>
-                )}
-              </div>
-            ))}
-        </div>
+      <div className="recipes">
+        {recipes &&
+          recipes.map((recipe, index) => (
+            <div className="recipeDiv" key={index}>
+              {this.props.editing ? (
+                <h3
+                  onClick={() => this.showRecipe(recipe)}
+                  className="recipeItem cross"
+                >
+                  {recipe.name}
+                </h3>
+              ) : (
+                <h3
+                  onClick={() => this.showRecipe(recipe)}
+                  className="recipeItem egg"
+                >
+                  {recipe.name}
+                </h3>
+              )}
+            </div>
+          ))}
       </div>
     );
   }
