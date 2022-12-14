@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-const dbConfig = require("../config/db.config.js");
 
 const db = {};
 db.mongoose = mongoose;
-db.url = dbConfig.url;
+db.url = process.env.URL;
 db.recipes = require("./recipe.model.js")(mongoose);
 db.ingredients = require("./ingredients.model.js")(mongoose);
 
