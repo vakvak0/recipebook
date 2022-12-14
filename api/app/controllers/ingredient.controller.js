@@ -1,5 +1,5 @@
 const db = require("../models");
-const Ingredient = db.ownedIngredients;
+const Ingredient = db.ingredients;
 
 // Create and Save a new ingredient
 exports.create = (req, res) => {
@@ -37,8 +37,7 @@ exports.findAll = (req, res) => {
     ? { title: { $regex: new RegExp(title), $options: "i" } }
     : {};
 
-  ingredient
-    .find(condition)
+  Ingredient.find(condition)
     .then((data) => {
       res.send(data);
     })
@@ -52,7 +51,7 @@ exports.findAll = (req, res) => {
 
 // Find a single ingredient with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.ingredientId;
 
   Ingredient.findById(id)
     .then((data) => {
@@ -75,7 +74,7 @@ exports.update = (req, res) => {
     });
   }
 
-  const id = req.params.id;
+  const id = req.params.ingredientId;
 
   Ingredient.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then((data) => {
@@ -94,7 +93,7 @@ exports.update = (req, res) => {
 
 // Delete a ingredient with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.ingredientId;
 
   Ingredient.findByIdAndRemove(id)
     .then((data) => {

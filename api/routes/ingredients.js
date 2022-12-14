@@ -1,18 +1,19 @@
-module.exports = (app) => {
-  const recipes = require("../controllers/ingredients.controller.js");
+const ingredients = require("../app/controllers/ingredient.controller.js");
+router = require("express").Router();
 
-  // Create a new Ingredient
-  app.post("/ingredients", recipes.createIngredient);
+// Create a new Ingredient
+router.post("/", ingredients.create);
 
-  // Retrieve all Ingredients
-  app.get("/ingredients", recipes.findAllIngredients);
+// Retrieve all Ingredients
+router.get("/", ingredients.findAll);
 
-  // Retrieve a single Ingredient with ingredientId
-  app.get("/ingredients/:ingredientId", recipes.findOneIngredient);
+// Retrieve a single Ingredient with ingredientId
+router.get("/:ingredientId", ingredients.findOne);
 
-  // Update a Ingredient with ingredientId
-  app.put("/ingredients/:ingredientId", recipes.updateIngredient);
+// Update a Ingredient with ingredientId
+router.put("/:ingredientId", ingredients.update);
 
-  // Delete a Ingredient with ingredientId
-  app.delete("/ingredients/:ingredientId", recipes.deleteIngredient);
-};
+// Delete a Ingredient with ingredientId
+router.delete("/:ingredientId", ingredients.delete);
+
+module.exports = router;

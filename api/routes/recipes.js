@@ -1,18 +1,19 @@
-module.exports = (app) => {
-  const recipes = require("../controllers/recipe.controller.js");
+const recipes = require("../app/controllers/recipe.controller.js");
+router = require("express").Router();
 
-  // Create a new Recipe
-  app.post("/recipes", recipes.create);
+// Create a new Recipe
+router.post("/", recipes.create);
 
-  // Retrieve all Recipes
-  app.get("/recipes", recipes.findAll);
+// Retrieve all Recipes
+router.get("/", recipes.findAll);
 
-  // Retrieve a single Recipe with recipeId
-  app.get("/recipes/:recipeId", recipes.findOne);
+// Retrieve a single Recipe with recipeId
+router.get("/:recipeId", recipes.findOne);
 
-  // Update a Recipe with recipeId
-  app.put("/recipes/:recipeId", recipes.update);
+// Update a Recipe with recipeId
+router.put("/:recipeId", recipes.update);
 
-  // Delete a Recipe with recipeId
-  app.delete("/recipes/:recipeId", recipes.delete);
-};
+// Delete a Recipe with recipeId
+router.delete("/:recipeId", recipes.delete);
+
+module.exports = router;

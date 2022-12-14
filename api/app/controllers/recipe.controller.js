@@ -50,7 +50,7 @@ exports.findAll = (req, res) => {
 
 // Find a single Recipe with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.recipeId;
 
   Recipe.findById(id)
     .then((data) => {
@@ -92,7 +92,7 @@ exports.update = (req, res) => {
 
 // Delete a Recipe with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.recipeId;
 
   Recipe.findByIdAndRemove(id)
     .then((data) => {
