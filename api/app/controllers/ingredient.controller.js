@@ -111,25 +111,6 @@ exports.delete = (req, res) => {
     });
 };
 
-//   Ingredient.findByIdAndRemove(id)
-//     .then((data) => {
-//       if (!data) {
-//         res.status(404).send({
-//           message: `Cannot delete ingredient with id=${id}. Maybe ingredient was not found!`,
-//         });
-//       } else {
-//         res.send({
-//           message: "ingredient was deleted successfully!",
-//         });
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: "Could not delete ingredient with id=" + id,
-//       });
-//     });
-// };
-
 // Delete all ingredients from the database.
 exports.deleteAll = (req, res) => {
   res.send({ message: `DONT!` });

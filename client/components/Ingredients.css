@@ -26,6 +26,15 @@ input:focus {
 h2 {
   margin-bottom: 50px;
 }
+.added::before {
+  display: inline-block;
+  content: "➕";
+  padding-right: 10px;
+  text-decoration: none !important;
+  color: transparent;
+  text-shadow: 0 0 0 green;
+}
+
 #name {
   width: 80px;
 }
