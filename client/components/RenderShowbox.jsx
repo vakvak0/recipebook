@@ -14,9 +14,7 @@ export default class RenderShowbox extends Component {
             this.props.showBox.ingredients.map((ingredient, index) => (
               <div className="ingredientDiv" key={index}>
                 <h4 className="ingredient">
-                  {ingredient.name}
-                  {ingredient.amount}
-                  {ingredient.unit}
+                  {ingredient.name} {ingredient.amount} {ingredient.unit}
                 </h4>
               </div>
             ))}
