@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import RepicesContainer from "../components/RecipesContainer";
-import Ingredients from "../components/Ingredients";
+import IngredientsContainer from "../components/IngredientsContainer";
 import RenderShowbox from "../components/RenderShowbox";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         onVisibilityChange={(visibility) => setVisibility(visibility)}
       />
       <div className="flexRow">
-        <Ingredients showBox={setShowBox} visibility={setVisibility} />
+        <IngredientsContainer showBox={setShowBox} visibility={setVisibility} />
         <RepicesContainer showBox={setShowBox} visibility={setVisibility} />
       </div>
     </div>

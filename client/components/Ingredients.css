@@ -1,0 +1,30 @@
+select:focus,
+input:focus {
+  border-color: #646cff;
+  outline: none;
+}
+.ingredient:hover {
+  cursor: default;
+}
+.ingredientOnEdit:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.ingredientDiv {
+  text-align: left;
+  padding-left: 20px;
+  width: fit-content;
+}
+.addIngredient {
+  text-align: left;
+  padding: 20px 0 0 20px;
+}
+h2 {
+  margin-bottom: 50px;
+}
+#name {
+  width: 80px;
+}
+#amount {
+  width: 50px;
+}

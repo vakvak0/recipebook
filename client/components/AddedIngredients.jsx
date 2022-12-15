@@ -1,11 +1,10 @@
 import React from "react";
-import "./Ingredients.css";
 
-export default function Ingredients(props) {
+export default function AddedIngredients(props) {
   return (
     <div className="ingredients">
-      {props.ingredients &&
-        props.ingredients.map((ingredient, index) => (
+      {props.addedIngredients &&
+        props.addedIngredients.map((ingredient, index) => (
           <div className="ingredientDiv" key={index}>
             <h3
               className={

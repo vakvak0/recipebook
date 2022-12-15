@@ -38,26 +38,27 @@ h1 {
   line-height: 1.1;
 }
 
-select:focus,
-input:focus {
-  border-color: #646cff;
-  outline: none;
+.content h3 {
+  margin: 18px 0 0;
 }
-
-input,
-select {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 4px 8px;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #212121;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  box-shadow: 0 0 1px 1px #f9f9f922;
+.content:hover {
+  box-shadow: inset 0 0 10px 5px #0405148c;
+  transition: box-shadow 0.5s;
+}
+.content {
+  margin-top: 100px;
+  transition: box-shadow 0.5s;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
+  border: 1px solid #4f55bac1;
+  box-shadow: inset 0 0 0px 0px #0405148c, 0 0 40px 1px rgba(19, 74, 255, 0.098);
+  min-width: 350px;
+  max-width: 20vw;
 }
 
 button {
+  margin-bottom: 18px;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -73,34 +74,6 @@ button:hover {
   border-color: #646cff;
 }
 
-.content {
-  margin-top: 100px;
-  transition: box-shadow 0.5s;
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 25px;
-  border-radius: 15px;
-  border: 1px solid #4f55bac1;
-  box-shadow: inset 0 0 0px 0px #0405148c, 0 0 40px 1px rgba(19, 74, 255, 0.098);
-  min-width: 350px;
-  max-width: 20vw;
-}
-
-.content:hover {
-  box-shadow: inset 0 0 10px 5px #0405148c;
-  transition: box-shadow 0.5s;
-}
-
-.recipeDiv h3:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-.ingredient:hover {
-  cursor: default;
-}
-.ingredientOnEdit:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
 .egg::before {
   display: inline-block;
   content: "\1F95A";
@@ -112,13 +85,6 @@ button:hover {
   content: "\274C";
   padding-right: 10px;
   text-decoration: none !important;
-}
-
-.recipeDiv,
-.ingredientDiv {
-  text-align: left;
-  padding-left: 20px;
-  width: fit-content;
 }
 
 .app {
@@ -141,70 +107,8 @@ button:hover {
   display: none;
 }
 
-.addIngredient {
-  text-align: left;
-  padding: 20px 0 0 20px;
-}
-
-.addIngredient:before {
-  display: inline-block;
-  content: "✅";
-  padding-right: 10px;
-  text-decoration: none !important;
-}
-
-.showbox {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  min-width: 400px;
-  min-height: 700px;
-  transform: translate(-50%, -50%);
-  padding: 50px 50px;
-  border-radius: 15px;
-  border: 1px solid #4f55bac1;
-  background: rgb(44, 44, 44);
-  background: linear-gradient(45deg, #3c3c3c 0%, #2c2c2c 100%);
-  box-shadow: 0 0 50px 1px rgba(19, 74, 255, 0.098);
-}
-.showbox .ingredient {
-  padding-left: 50px;
-  text-align: left;
-  margin: 0;
-}
-.overlay {
-  position: absolute;
-  filter: invert(blur(50px));
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.276);
-}
 h4 {
   margin: 0;
-}
-.showbox h3 {
-  margin: 50px 0 0 0;
-}
-h2 {
-  margin-bottom: 50px;
-}
-
-.showbox .ingredient::before {
-  display: inline-block;
-  content: "\1F95A";
-  padding-right: 10px;
-  text-decoration: none !important;
-}
-#name {
-  width: 80px;
-  margin-right: 7px;
-}
-#amount {
-  width: 50px;
-  margin-right: 7px;
 }
 
 @media (prefers-color-scheme: light) {

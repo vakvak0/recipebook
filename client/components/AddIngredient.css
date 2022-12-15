@@ -1,0 +1,14 @@
+input,
+select,
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 4px 8px;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #212121;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  box-shadow: 0 0 1px 1px #f9f9f922;
+  margin-right: 10px;
+}
