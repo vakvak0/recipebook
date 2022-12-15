@@ -8,6 +8,7 @@ export default function IngredientsContainer(props) {
   const [ingredients, setIngredients] = useState([{}]);
   const [editing, setEditing] = useState(false);
   const [addedIngredients, setAddedIngredients] = useState([]);
+  const [deletedIngredients, setdeletedIngredients] = useState([]);
 
   function loadList() {
     IngredientDataService.getAll()
@@ -31,10 +32,26 @@ export default function IngredientsContainer(props) {
       });
   }
 
+  function popList() {
+    IngredientDataService.delete(deletedIngredients)
+      .then((response) => {
+        console.log(response.data);
+        setdeletedIngredients([]);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   function appendIngredient(ingredient) {
     if (ingredient.name && ingredient.amount && ingredient.unit) {
       setAddedIngredients([...addedIngredients, ingredient]);
     }
+  }
+
+  function popIngredient(index) {
+    setdeletedIngredients([...deletedIngredients, ingredients[index]._id]);
+    setIngredients(ingredients.filter((ingredient, i) => i !== index));
   }
 
   // run on start
@@ -43,11 +60,14 @@ export default function IngredientsContainer(props) {
   }, []);
 
   useEffect(() => {
-    if (editing || addedIngredients.length == 0) {
-      return;
+    if (!editing && addedIngredients.length != 0) {
+      appendList();
+      console.log("addedIngredients: ", addedIngredients);
     }
-    console.log("addedIngredients: ", addedIngredients);
-    appendList(addedIngredients);
+    if (!editing && deletedIngredients.length != 0) {
+      popList();
+      console.log("deletedIngredients: ", deletedIngredients);
+    }
   }, [editing]);
 
   return (
@@ -61,7 +81,11 @@ export default function IngredientsContainer(props) {
         visibility={editing ? "visible" : "hidden"}
         appendIngredient={(ingredient) => appendIngredient(ingredient)}
       />
-      <Ingredients ingredients={ingredients} editing={editing} />
+      <Ingredients
+        ingredients={ingredients}
+        editing={editing}
+        popIngredient={(index) => popIngredient(index)}
+      />
     </div>
   );
 }

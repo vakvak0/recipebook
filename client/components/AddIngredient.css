@@ -1,6 +1,6 @@
 input,
 select,
-button {
+.addIngredientButton {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 4px 8px;

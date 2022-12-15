@@ -46,6 +46,8 @@ h1 {
   transition: box-shadow 0.5s;
 }
 .content {
+  min-height: 400px;
+  height: fit-content;
   margin-top: 100px;
   transition: box-shadow 0.5s;
   background-color: rgba(255, 255, 255, 0.05);
@@ -76,15 +78,31 @@ button:hover {
 
 .egg::before {
   display: inline-block;
-  content: "\1F95A";
+  content: "🥚";
   padding-right: 10px;
   text-decoration: none !important;
 }
-.cross::before {
+.edit::before {
   display: inline-block;
-  content: "\274C";
+  content: "🔵";
   padding-right: 10px;
   text-decoration: none !important;
+}
+.edit:hover::before {
+  display: inline-block;
+  content: "✏️";
+  padding-right: 10px;
+  text-decoration: none !important;
+}
+.delete:hover ~ ::before {
+  display: inline-block;
+  content: "❌";
+  padding-right: 10px;
+  text-decoration: none !important;
+}
+.delete {
+  color: #61a0ff;
+  padding-left: 10px;
 }
 
 .app {

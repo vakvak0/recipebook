@@ -90,26 +90,45 @@ exports.update = (req, res) => {
 
 // Delete a ingredient with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.ingredientId;
-
-  Ingredient.findByIdAndRemove(id)
+  const ids = req.params.ingredientId.split(",");
+  // deleteMany by group of ids
+  Ingredient.deleteMany({ _id: { $in: ids } })
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete ingredient with id=${id}. Maybe ingredient was not found!`,
+          message: `Cannot delete ingredient with id=${ids}. Maybe ingredient was not found!`,
         });
       } else {
         res.send({
-          message: "ingredient was deleted successfully!",
+          message: "ingredients was deleted successfully!",
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete ingredient with id=" + id,
+        message: "Could not delete ingredient with id=" + ids,
       });
     });
 };
+
+//   Ingredient.findByIdAndRemove(id)
+//     .then((data) => {
+//       if (!data) {
+//         res.status(404).send({
+//           message: `Cannot delete ingredient with id=${id}. Maybe ingredient was not found!`,
+//         });
+//       } else {
+//         res.send({
+//           message: "ingredient was deleted successfully!",
+//         });
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: "Could not delete ingredient with id=" + id,
+//       });
+//     });
+// };
 
 // Delete all ingredients from the database.
 exports.deleteAll = (req, res) => {
