@@ -13,7 +13,6 @@ exports.create = (req, res) => {
     });
     ingredients.push(ingredient);
   }
-  debugger;
 
   // Save Ingredient in the database
   Ingredient.insertMany(ingredients)

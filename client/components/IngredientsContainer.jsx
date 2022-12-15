@@ -24,6 +24,7 @@ export default function IngredientsContainer(props) {
       .then((response) => {
         console.log(response.data);
         setAddedIngredients([]);
+        setIngredients([...ingredients, ...addedIngredients]);
       })
       .catch((e) => {
         console.log(e);
