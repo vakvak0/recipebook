@@ -5,6 +5,7 @@ input:focus {
 }
 .ingredient:hover {
   cursor: default;
+  text-decoration: none;
 }
 .ingredientOnEdit:hover {
   cursor: pointer;

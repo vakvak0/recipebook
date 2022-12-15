@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RecipeDataService from "../src/services/recipe.service";
+import "./Recipes.css";
 
 function Recipes(props) {
   const [recipes, setRecipes] = useState([{}]);

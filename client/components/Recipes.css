@@ -2,7 +2,7 @@ h3:hover {
   cursor: pointer;
   text-decoration: underline;
 }
-.ingredientDiv {
+.recipeDiv {
   text-align: left;
   padding-left: 20px;
   width: fit-content;
