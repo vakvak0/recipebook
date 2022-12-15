@@ -4,7 +4,7 @@ import AddIngredient from "./AddIngredient";
 import Ingredients from "./Ingredients";
 import AddedIngredients from "./AddedIngredients";
 
-function IngredientsContainer(props) {
+export default function IngredientsContainer(props) {
   const [ingredients, setIngredients] = useState([{}]);
   const [editing, setEditing] = useState(false);
   const [addedIngredients, setAddedIngredients] = useState([]);
@@ -64,5 +64,3 @@ function IngredientsContainer(props) {
     </div>
   );
 }
-
-export default IngredientsContainer;

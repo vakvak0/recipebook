@@ -3,22 +3,20 @@ const Ingredient = db.ingredients;
 
 // Create and Save a new ingredient
 exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.title) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
+  // Create a Ingredient
+  const ingredients = [];
+  for (let i = 0; i < req.body.length; i++) {
+    const ingredient = new Ingredient({
+      name: req.body[i].name,
+      amount: req.body[i].amount,
+      unit: req.body[i].unit,
+    });
+    ingredients.push(ingredient);
   }
+  debugger;
 
-  // Create a Tutorial
-  const ingredient = new Ingredient({
-    name: req.body.name,
-    ingredients: req.body.ingredients,
-    instructions: req.body.instructions,
-  });
-
-  // Save Tutorial in the database
-  ingredient
-    .save(ingredient)
+  // Save Ingredient in the database
+  Ingredient.insertMany(ingredients)
     .then((data) => {
       res.send(data);
     })
