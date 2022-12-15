@@ -25,7 +25,6 @@ function Ingredients(props) {
     <div className="content">
       <h2>Raaka-aineet</h2>
       <button onClick={() => setEditing(!editing)}>
-        {" "}
         {editing ? "Tallenna muutokset" : "Muokkaa raaka-aineita"}
       </button>
       <AddIngredient visibility={editing ? "visible" : "hidden"} />
@@ -33,15 +32,13 @@ function Ingredients(props) {
         {ingredients &&
           ingredients.map((ingredient, index) => (
             <div className="ingredientDiv" key={index}>
-              {editing ? (
-                <h3 className="ingredientOnEdit cross">
-                  {ingredient.name} {ingredient.amount} {ingredient.unit}
-                </h3>
-              ) : (
-                <h3 className="ingredient egg">
-                  {ingredient.name} {ingredient.amount} {ingredient.unit}
-                </h3>
-              )}
+              <h3
+                className={
+                  editing ? "ingredientOnEdit cross" : "ingredient egg"
+                }
+              >
+                {ingredient.name} {ingredient.amount} {ingredient.unit}
+              </h3>
             </div>
           ))}
       </div>
