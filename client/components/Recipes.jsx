@@ -1,63 +1,44 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import RecipeDataService from "../src/services/recipe.service";
 
-export default class Recipes extends Component {
-  constructor(props) {
-    super(props);
-    this.loadList = this.loadList.bind(this);
-    this.state = {
-      recipes: {},
-    };
-  }
+function Recipes(props) {
+  const [recipes, setRecipes] = useState([{}]);
 
-  loadList() {
+  function loadList() {
     RecipeDataService.getAll()
       .then((response) => {
-        this.setState({
-          recipes: response.data,
-        }),
-          console.log(response.data);
+        setRecipes(response.data), console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
       });
   }
 
-  componentDidMount() {
-    this.loadList();
+  function showRecipe(recipe) {
+    props.visibility("visible");
+    props.showBox(recipe);
   }
 
-  showRecipe(recipe) {
-    this.props.visibility("visible");
-    this.props.showBox(recipe);
-  }
+  useEffect(() => {
+    loadList();
+  }, []);
 
-  render() {
-    let recipes = this.state.recipes;
-    if (JSON.stringify(recipes) == "{}") return <div>Haetaan reseptejä</div>;
-    return (
-      <div className="recipes">
-        {recipes &&
-          recipes.map((recipe, index) => (
-            <div className="recipeDiv" key={index}>
-              {this.props.editing ? (
-                <h3
-                  onClick={() => this.showRecipe(recipe)}
-                  className="recipeItem cross"
-                >
-                  {recipe.name}
-                </h3>
-              ) : (
-                <h3
-                  onClick={() => this.showRecipe(recipe)}
-                  className="recipeItem egg"
-                >
-                  {recipe.name}
-                </h3>
-              )}
-            </div>
-          ))}
-      </div>
-    );
-  }
+  if (JSON.stringify(recipes) == "{}") return <div>Haetaan reseptejä</div>;
+  return (
+    <div className="recipes">
+      {recipes &&
+        recipes.map((recipe, index) => (
+          <div className="recipeDiv" key={index}>
+            <h3
+              onClick={() => showRecipe(recipe)}
+              className={props.editing ? "recipeItem cross" : "recipeItem egg"}
+            >
+              {recipe.name}
+            </h3>
+          </div>
+        ))}
+    </div>
+  );
 }
+
+export default Recipes;
