@@ -38,6 +38,25 @@ h1 {
   line-height: 1.1;
 }
 
+select:focus,
+input:focus {
+  border-color: #646cff;
+  outline: none;
+}
+
+input,
+select {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 4px 8px;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #212121;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  box-shadow: 0 0 1px 1px #f9f9f922;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -53,10 +72,7 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 .content {
   margin-top: 100px;
   transition: box-shadow 0.5s;
@@ -122,6 +138,19 @@ button:focus-visible {
 
 .hidden {
   visibility: hidden;
+  display: none;
+}
+
+.addIngredient {
+  text-align: left;
+  padding: 20px 0 0 20px;
+}
+
+.addIngredient:before {
+  display: inline-block;
+  content: "✅";
+  padding-right: 10px;
+  text-decoration: none !important;
 }
 
 .showbox {
@@ -162,11 +191,20 @@ h4 {
 h2 {
   margin-bottom: 50px;
 }
+
 .showbox .ingredient::before {
   display: inline-block;
   content: "\1F95A";
   padding-right: 10px;
   text-decoration: none !important;
+}
+#name {
+  width: 80px;
+  margin-right: 7px;
+}
+#amount {
+  width: 50px;
+  margin-right: 7px;
 }
 
 @media (prefers-color-scheme: light) {

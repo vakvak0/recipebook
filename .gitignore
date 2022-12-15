@@ -9,7 +9,6 @@ lerna-debug.log*
 .env
 
 node_modules
-../api/node_modules
 dist
 dist-ssr
 *.local
@@ -24,3 +23,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+reseptit.json
+tuotteet.json

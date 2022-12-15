@@ -1,5 +1,6 @@
 import IngredientDataService from "../src/services/Ingredient.service";
 import React, { Component } from "react";
+import AddIngredient from "../components/AddIngredient";
 export default class Ingredients extends Component {
   constructor(props) {
     super(props);
@@ -37,6 +38,7 @@ export default class Ingredients extends Component {
           {" "}
           {this.state.editing ? "Tallenna muutokset" : "Muokkaa raaka-aineita"}
         </button>
+        <AddIngredient visibility={this.state.editing ? "visible" : "hidden"} />
         <div className="ingredients">
           {ingredients &&
             ingredients.map((ingredient, index) => (
