@@ -1,38 +1,28 @@
 import React, { useState, useEffect } from "react";
-import RecipeDataService from "../src/services/recipe.service";
 import "./Recipes.css";
 
-function Recipes(props) {
+export default function Recipes(props) {
   const [recipes, setRecipes] = useState([{}]);
-
-  function loadList() {
-    RecipeDataService.getAll()
-      .then((response) => {
-        setRecipes(response.data), console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }
 
   function showRecipe(recipe) {
     props.visibility("visible");
     props.showBox(recipe);
   }
 
-  useEffect(() => {
-    loadList();
-  }, []);
-
   if (JSON.stringify(recipes) == "{}") return <div>Haetaan reseptejä</div>;
   return (
     <div className="recipes">
-      {recipes &&
-        recipes.map((recipe, index) => (
+      {props.recipes &&
+        props.recipes.map((recipe, index) => (
           <div className="recipeDiv" key={index}>
+            {props.editing && (
+              <h3 className="delete" onClick={() => props.popIngredient(index)}>
+                Poista
+              </h3>
+            )}
             <h3
               onClick={() => showRecipe(recipe)}
-              className={props.editing ? "recipeItem cross" : "recipeItem egg"}
+              className={props.editing ? "recipeItem edit" : "recipeItem egg"}
             >
               {recipe.name}
             </h3>
@@ -41,5 +31,3 @@ function Recipes(props) {
     </div>
   );
 }
-
-export default Recipes;

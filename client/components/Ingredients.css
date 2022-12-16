@@ -13,6 +13,8 @@ input:focus {
 }
 
 .ingredientDiv {
+  white-space: nowrap;
+  overflow: hidden;
   display: flex;
   flex-direction: row-reverse;
   text-align: left;

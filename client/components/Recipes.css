@@ -3,6 +3,10 @@ h3:hover {
   text-decoration: underline;
 }
 .recipeDiv {
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
   text-align: left;
   padding-left: 20px;
   width: fit-content;

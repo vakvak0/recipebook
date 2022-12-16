@@ -1,4 +1,5 @@
 import React from "react";
+import "./RenderShowbox.css";
 
 function RenderShowbox(props) {
   return (

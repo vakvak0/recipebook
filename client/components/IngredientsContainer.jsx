@@ -1,5 +1,5 @@
-import IngredientDataService from "../src/services/Ingredient.service";
 import React, { useState, useEffect } from "react";
+import IngredientDataService from "../src/services/Ingredient.service";
 import AddIngredient from "./AddIngredient";
 import Ingredients from "./Ingredients";
 import AddedIngredients from "./AddedIngredients";
@@ -37,7 +37,7 @@ export default function IngredientsContainer(props) {
   }
 
   function popList() {
-    idList = deletedIngredients.map((id) => id._id);
+    let idList = deletedIngredients.map((id) => id._id);
     IngredientDataService.delete(idList)
       .then((response) => {
         console.log(response.data);
