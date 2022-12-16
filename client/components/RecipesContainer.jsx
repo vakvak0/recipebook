@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import RepiceDataService from "../src/services/Recipe.service";
 import Recipes from "./Recipes";
+import AddedRecipes from "./AddedRecipes";
+import AddRecipe from "./AddRecipe";
 
-function RepicesContainer(props) {
+export default function RepicesContainer(props) {
   const [recipes, setRecipes] = useState([{}]);
   const [editing, setEditing] = useState(false);
   const [addedRecipes, setAddedRecipes] = useState([]);
@@ -68,6 +70,11 @@ function RepicesContainer(props) {
     setEditing(false);
   }
 
+  function addRecipe() {
+    props.showBox(true);
+    props.visibility("visible");
+  }
+
   // load ingredients on start
   useEffect(() => {
     loadList();
@@ -91,6 +98,24 @@ function RepicesContainer(props) {
       <button onClick={() => setEditing(!editing)}>
         {editing ? "Tallenna muutokset" : "Muokkaa reseptejä"}
       </button>
+      <button
+        onClick={() => cancelEdit()}
+        className={editing ? "visible" : "hidden"}
+      >
+        Peruuta
+      </button>
+      <br />
+      <button
+        onClick={() => addRecipe()}
+        className={"addRecipeButton " + (editing ? "visible" : "hidden")}
+      >
+        Lisää resepti
+      </button>
+      <AddedRecipes
+        addedRecipes={addedRecipes}
+        editing={editing}
+        appendRecipe={(ingredient) => appendRecipe(ingredient)}
+      />
       <Recipes
         recipes={recipes}
         editing={editing}
@@ -101,5 +126,3 @@ function RepicesContainer(props) {
     </div>
   );
 }
-
-export default RepicesContainer;

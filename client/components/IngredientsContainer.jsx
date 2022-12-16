@@ -93,10 +93,13 @@ export default function IngredientsContainer(props) {
       <button onClick={() => setEditing(!editing)}>
         {editing ? "Tallenna muutokset" : "Muokkaa raaka-aineita"}
       </button>
-      <button onClick={cancelEdit} className={editing ? "visible" : "hidden"}>
+      <button
+        onClick={() => cancelEdit()}
+        className={editing ? "visible" : "hidden"}
+      >
         Peruuta
       </button>
-      <AddedIngredients addedIngredients={addedIngredients} editing={editing} />
+      <AddedIngredients addedIngredients={addedIngredients} />
       <AddIngredient
         visibility={editing ? "visible" : "hidden"}
         appendIngredient={(ingredient) => appendIngredient(ingredient)}

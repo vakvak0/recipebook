@@ -16,12 +16,12 @@ export default function Recipes(props) {
         props.recipes.map((recipe, index) => (
           <div className="recipeDiv" key={index}>
             {props.editing && (
-              <h3 className="delete" onClick={() => props.popIngredient(index)}>
+              <h3 className="delete" onClick={() => props.popRecipe(index)}>
                 Poista
               </h3>
             )}
             <h3
-              onClick={() => showRecipe(recipe)}
+              onClick={() => showRecipe(recipe, { editable: false })}
               className={props.editing ? "recipeItem edit" : "recipeItem egg"}
             >
               {recipe.name}

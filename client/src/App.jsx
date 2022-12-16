@@ -17,8 +17,14 @@ function App() {
         onVisibilityChange={(visibility) => setVisibility(visibility)}
       />
       <div className="flexRow">
-        <IngredientsContainer showBox={setShowBox} visibility={setVisibility} />
-        <RepicesContainer showBox={setShowBox} visibility={setVisibility} />
+        <IngredientsContainer
+          showBox={() => setShowBox()}
+          visibility={() => setVisibility()}
+        />
+        <RepicesContainer
+          showBox={(editable) => setShowBox({ editable })}
+          visibility={(state) => setVisibility(state)}
+        />
       </div>
     </div>
   );

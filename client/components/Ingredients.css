@@ -1,5 +1,6 @@
 select:focus,
-input:focus {
+input:focus,
+textarea:focus {
   border-color: #646cff;
   outline: none;
 }
